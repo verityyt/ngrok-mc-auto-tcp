@@ -15,6 +15,8 @@ object NgrokMcAutoTcp {
     @JvmStatic
     fun main(args: Array<String>) {
 
+        val ram = args[0].toInt()
+
         val isNgrokRunning = isProcessRunning("ngrok.exe")
 
         if (!isNgrokRunning) {
@@ -28,7 +30,7 @@ object NgrokMcAutoTcp {
             exitProcess(-1)
         }
 
-        ServerManager.start(mcPath, 2048)
+        ServerManager.start(mcPath, ram)
 
         val port = PropertiesReader.read("$mcPath\\server.properties", "server-port")
 
