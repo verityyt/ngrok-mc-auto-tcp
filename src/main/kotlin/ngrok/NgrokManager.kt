@@ -37,7 +37,9 @@ object NgrokManager {
 
             if (proc.isAlive) {
                 CConsole.println("[INFO] TCP tunnel successfully opened!", CConsoleColor.Cyan)
-                CConsole.println("\n[INFO] All services running fine!", CConsoleColor.Green)
+                CConsole.println("\n----------------------------------", CConsoleColor.Green)
+                CConsole.println("[INFO] All services running fine!", CConsoleColor.Green)
+                CConsole.println("----------------------------------", CConsoleColor.Green)
             } else {
                 CConsole.println("----------------------------------", CConsoleColor.Red)
                 CConsole.println("TCP tunnel opening failed!", CConsoleColor.Red)
