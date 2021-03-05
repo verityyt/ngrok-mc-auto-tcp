@@ -3,7 +3,7 @@ import ngrok.NgrokManager
 import utils.CConsole
 import utils.CConsoleColor
 import utils.PropertiesReader
-import java.io.IOException
+import java.util.*
 import kotlin.system.exitProcess
 
 object NgrokMcAutoTcp {
@@ -33,6 +33,9 @@ object NgrokMcAutoTcp {
         val port = PropertiesReader.read("$mcPath\\server.properties", "server-port")
 
         NgrokManager.tcp(ngrokPath, port.toInt())
+
+        val scanner = Scanner(System.`in`)
+        scanner.nextLine()
 
     }
 
