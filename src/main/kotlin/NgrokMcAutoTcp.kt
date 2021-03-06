@@ -3,6 +3,7 @@ import ngrok.NgrokManager
 import utils.CConsole
 import utils.CConsoleColor
 import utils.PropertiesReader
+import java.lang.Exception
 import java.util.*
 import kotlin.system.exitProcess
 
@@ -10,12 +11,22 @@ object NgrokMcAutoTcp {
 
     val mcPath = "D:\\Minecraft\\Server\\Survival Project"
     val ngrokPath = "E:\\Program Files\\Ngrok"
-    val debug = true
+    var debug = false
+    var ram = 1024
 
     @JvmStatic
     fun main(args: Array<String>) {
 
-        val ram = args[0].toInt()
+        if(args.size != 2) {
+            CConsole.println("[INFO] Wrong program arguments! (Please use %ram%[number] %debug%[true|false])", CConsoleColor.Cyan)
+        }
+
+        try {
+            ram = args[0].toInt()
+            debug = args[1].toBoolean()
+        }catch (e: Exception) {
+            CConsole.println("[INFO] Wrong program arguments! (Please use %ram%[number] %debug%[true|false])", CConsoleColor.Cyan)
+        }
 
         val isNgrokRunning = isProcessRunning("ngrok.exe")
 
