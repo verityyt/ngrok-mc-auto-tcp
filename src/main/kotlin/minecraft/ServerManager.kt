@@ -20,17 +20,6 @@ object ServerManager {
         }
 
         val batch = File("$path\\cur.bat")
-        batch.writeText(
-            "rem Bypass \"Terminate Batch Job\" prompt.\n" +
-                    "if \"%~1\"==\"-FIXED_CTRL_C\" (\n" +
-                    "   REM Remove the -FIXED_CTRL_C parameter\n" +
-                    "   SHIFT\n" +
-                    ") ELSE (\n" +
-                    "   REM Run the batch with <NUL and -FIXED_CTRL_C\n" +
-                    "   CALL <NUL %0 -FIXED_CTRL_C %*\n" +
-                    "   GOTO :EOF\n" +
-                    ")"
-        )
         batch.writeText("java -Xmx${ram}M -Xms${ram}M -jar $jarName.jar nogui\npause")
 
         if (batch.readText() != "") {
