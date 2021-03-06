@@ -18,14 +18,18 @@ object NgrokMcAutoTcp {
     fun main(args: Array<String>) {
 
         if(args.size != 2) {
-            CConsole.println("[INFO] Wrong program arguments! (Please use %ram%[number] %debug%[true|false])", CConsoleColor.Cyan)
+            CConsole.println("----------------------------------", CConsoleColor.Red)
+            CConsole.println("Wrong program arguments! (Please use %ram%[number] %debug%[true|false])", CConsoleColor.Red)
+            CConsole.println("----------------------------------", CConsoleColor.Red)
         }
 
         try {
             ram = args[0].toInt()
             debug = args[1].toBoolean()
         }catch (e: Exception) {
-            CConsole.println("[INFO] Wrong program arguments! (Please use %ram%[number] %debug%[true|false])", CConsoleColor.Cyan)
+            CConsole.println("----------------------------------", CConsoleColor.Red)
+            CConsole.println("Wrong program arguments! (Please use %ram%[number] %debug%[true|false])", CConsoleColor.Red)
+            CConsole.println("----------------------------------", CConsoleColor.Red)
         }
 
         val isNgrokRunning = isProcessRunning("ngrok.exe")
