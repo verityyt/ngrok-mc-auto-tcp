@@ -21,6 +21,7 @@ object NgrokMcAutoTcp {
             CConsole.println("----------------------------------", CConsoleColor.Red)
             CConsole.println("Wrong program arguments! (Please use %ram%[number] %debug%[true|false])", CConsoleColor.Red)
             CConsole.println("----------------------------------", CConsoleColor.Red)
+            exitProcess(-1)
         }
 
         try {
@@ -30,6 +31,7 @@ object NgrokMcAutoTcp {
             CConsole.println("----------------------------------", CConsoleColor.Red)
             CConsole.println("Wrong program arguments! (Please use %ram%[number] %debug%[true|false])", CConsoleColor.Red)
             CConsole.println("----------------------------------", CConsoleColor.Red)
+            exitProcess(-1)
         }
 
         val isNgrokRunning = isProcessRunning("ngrok.exe")
