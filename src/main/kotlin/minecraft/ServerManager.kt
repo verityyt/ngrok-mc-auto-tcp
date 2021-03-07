@@ -20,7 +20,8 @@ object ServerManager {
         }
 
         val batch = File("$path\\cur.bat")
-        batch.writeText("java -Xmx${ram}M -Xms${ram}M -jar $jarName.jar nogui\npause")
+        val serverJar = "$path\\$jarName.jar"
+        batch.writeText("wt java -Xmx${ram}M -Xms${ram}M -jar \"$serverJar\" nogui\nexit")
 
         if (batch.readText() != "") {
             if (NgrokMcAutoTcp.debug) {
