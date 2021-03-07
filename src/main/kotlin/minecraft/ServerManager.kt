@@ -8,7 +8,7 @@ import kotlin.system.exitProcess
 
 object ServerManager {
 
-    fun start(path: String, ram: Int, jarName: String = "server") {
+    fun start(path: String, ram: Int, jarName: String = "server", port: Int? = null) {
 
         CConsole.println(
             "[INFO] Starting up server in '/${File(path).name}' with '${ram}MB' max. ram...",
@@ -21,7 +21,7 @@ object ServerManager {
 
         val batch = File("$path\\cur.bat")
         val serverJar = "$path\\$jarName.jar"
-        batch.writeText("wt java -Xmx${ram}M -Xms${ram}M -jar \"$serverJar\" nogui\nexit")
+        batch.writeText("@echo off\ncolor a\ntitle Server console ${if(port != null) {"($port)"}else {""}}\n@echo on\njava -Xmx${ram}M -Xms${ram}M -jar \"$serverJar\" nogui\npause")
 
         if (batch.readText() != "") {
             if (NgrokMcAutoTcp.debug) {

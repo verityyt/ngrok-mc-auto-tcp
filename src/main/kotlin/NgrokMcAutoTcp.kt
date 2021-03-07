@@ -47,9 +47,9 @@ object NgrokMcAutoTcp {
             exitProcess(-1)
         }
 
-        ServerManager.start(mcPath, ram)
-
         val port = PropertiesReader.read("$mcPath\\server.properties", "server-port")
+
+        ServerManager.start(mcPath, ram, "server", port.toInt())
 
         NgrokManager.tcp(ngrokPath, port.toInt())
 
